@@ -1,46 +1,64 @@
-tree = []
-## ( (a) c ( b )((()E)) )
-# [{pos:0, len:20, childs:6},
-#   [{pos:2, len:1, content:" "}],
-#   [{pos:, len:1, childs:1},
-#     {pos:, len:1, content:"a"}
-#   ],
-#   [{pos:, len:3, content:" c "}],
-#   [{pos:, len:, childs:1}, {item:" b "}],
-#   [{…},
-#     [{…},
-#       [{pos:u, len:0, childs:0}],
-#       {pos:v, len:1, content:"E"}
-#     ]
-#   ],
-#   [{item:" "}]
-# ]
+#!/usr/bin/env
+#-*- coding: utf-8 -*-
 
-I = """( (a) c ( b )((()E)) )"""
+# Python >= 3000
+
+
+iput = '''––––––––––––––––––––––––––––––––––––––––
+(patt ) ê (replacement)
+( patt) y (replacement)
+( p) ê ( r)
+
+  patt <---
+'''.decode('utf-8')
+
+rule_string = u'ê'
+raw = iput
+
+
+
+print raw
+print "⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣"
+### Algorithm
+#while there_are_rules_in( raw ):
+  # Applies to a subpart of the input AND removes the first rule
+#  raw = apply_first_rule_found( raw )  # Assignment b/c Python doesn't pass by ref.
+#print raw
+###
+
+
+l = len(iput)
 i = 0
-L = len(I)
-a = ''
-tree = []
+c = ''
+while i < l:
+  c = iput[i]
+  if 
+  i = i + 1
 
-while i < L:
-    if '(' == I[i]:
-        if current['content']:    # if is an item
-            current['len'] = current['pos'] - i + 1
-            current['content'] = a
+#def f_string( start, what, string
+def trim_escaped_text( text ):
+  for (i, c) in enumerate(text):
+    if ( c in [' ', '\t'] ) and text[i +1] != '\\':
+      text = text[: i] + text[i+1 :]
+  return text
 
-        new = [{'pos':i, 'len':-1, 'childs':-1}]
-        current.append(new)
-        current = current.child(-1)    # current's last child
+trim_escaped_text(raw)
 
-    elif ')' == I[i]:
-        current['len'] = current['pos'] - i + 1
-        current['childs'] = count(current)
-        current = current.parent()
 
-    else
-        tok += I[i]
 
-    i += 1
 
-print tree
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
