@@ -1,147 +1,79 @@
-#/usr/bin/env python
-# -*- coding: utf-8 -*-
+#!/usr/bin/env
+#-*- coding: utf-8 -*-
 
-# First real implementation of Language's transcoder
+# Python >= 2.6.1
 
-#  Regarding the encoding (utf-8), it limits the Input's scope to utf-8 in
-# that we use plain string comparison. BAD.
-# MUST handle Unicode For Real! or gtfo
+import re
 
-### Enter Input code here
-Input = """  ( a+ )  =  ( b )  """
+def there_are_rules_in( text ):
+  return ( len(find_first_rule( text )) >= 1 )
 
 
-# Here braces are Braces : LB or RB
-# LB <> Left  Brace
-LB = '('
-# RB <> Right Brace
-RB = ')'
 
-def is_a_Left_Brace( char ):
-    return LB == char
-def is_a_Right_Brace( char ):
-    return RB == char
-def is_a_Brace( c ):
-    #return is_a_LB(c) or is_a_RB(c)
-    global LB, RB
-    return c is in (LB, RB)
+def apply_first_rule_found( text ):
+  (patt, rep, (start, end)) = find_first_rule( text )
+  # remove the rule & split text: the rule applies in the second part
+  t1 = text[: start]
+  t2 = text[end :]
+  print re.escape(patt), len(re.escape(patt)), patt, len(patt), re.escape(rep), len(re.escape(rep)), rep, len(rep)#
+  t2 = re.sub( re.escape(patt), rep, t2 )  # replace
+  return t1 + t2
 
 
-def check_braces_count_quickly( input_string ):
-    """
-    Returns True when there's an even count of Braces
-    """
-    count = 0
 
-    for char in input_string:
-        if is_a_Brace(char):
-            count += 1
+def find_first_rule( text ):
+  global rule_string
 
-    return 0 == count % 2   # check if count is even
+  regex  = ur' (\(|\[|\{) \s* ([^' + rule_string + ur'\n \1 ]+) \s* \1 '
+  regex += ur'\s*' + rule_string + ur'\s*'
+  regex += ur' (\(|\[|\{) \s* ([^' + rule_string + ur'\n \2 ]+) \s* \2 '
 
+  mask = re.compile(regex, re.S | re.X)
+  matches = mask.findall( text )
 
-def check_braces_count( input ):
-    count = 0
-
-    for char in input:
-        if is_a_Left_Brace(char):
-            count += 1
-        elif is_a_Right_Brace(char):
-            count -= 1
-        else
-            pass
-
-    return 0 == count
-
-# Loops LtR & RtL
-def loop_to_char( char, start_at = 0 ):
-    """
-    
-    """
-    global I
-    i = start_at
-    L = len(I)
-
-    while i < L:
-        if char == I[i]
-            return i
-        else pass
-        i += 1  # <> Left to Right (LtR) reading
-
-    return False    #error
-
-def loop_from_char( char, start_at = 0 ):
-    global I
-    i = start_at
-    L = len(I)
-
-    while i < L:
-        if char == I[i]
-            return i
-        else pass
-        i += 1  # <> Left to Right (LtR) reading
-
-    return False    #error
+  if len(matches) is 0:
+    return matches
+  else:
+    (pos_s, pos_e) = mask.search( text ).span()
+    print matches
+    return (
+      matches[0][1].decode('utf-8'),  # Pattern
+      matches[0][2].decode('utf-8'),  # Replacement
+      (pos_s , pos_e +1)  # Start, End
+    )
 
 
-# Finds Previous & Next
-def find_previous( char ):
-def find_next( input, char ):
-    """
-    Return the position to the next 'char' on the right (in LtR)
-    """
-    return
 
 
-def display_till( input, pos, char_on_the_left, char_on_the_right ):
-    """
-    Show chars on the 
-    """
-    return
+iput = '''––––––––––––––––––––––––––––––––––––––––
+(patt ) ê (replacement)
+( patt) y (replacement)
+( p) ê ( r)
 
-def display_around( input, pos, nb_chars_around ):
-    return
+  patt <---
+'''.decode('utf-8')
 
-
-   ### Parsing the Input
-
-# Pre-fromating:
-I = '(\n' + Input + '\n)'   # Adds a root
-
-# Pre-checks:
-check_braces_count(I)
-
-# Tree-ing the input
-L = len(I)
+rule_string = u'ê'
+raw = iput
 
 
-# Split in words || Tokenize (A token is everything but a Brace)
-i = 0   # Strings[] start at 0
-isBlock = None      # Set to True if the current char is part of a "word" // "brace" ("//" <> instead of)
-block = ''          # Stores the current Word
-nb = []             # Stores the number of openned Brace by kind of Brace
-for item in Braces["list"]:
-    nb.append({ item["name"]: 0})   # Adds Braces' kind
+# Tests
+# print find_first_rule(raw)
+# print there_are_rules_in(raw)
+# apply_first_rule_found(raw)
 
-while i < L:
-    c = I[i]
-    print i, I[i]
 
-    isBlock = not is_it_a_brace(c)
-    if isBlock:
-        block += c  # Builds a Word
-    else
-        for brace in Braces["list"]:    # Helps with syntax error handling
-            if   c == brace["begin"]:   #and 
-                nb[brace["name"]] += 1
-            elif c == brace["end"]:
-                nb[brace["name"]] -= 1
 
-    i += 1
+print raw
+print "⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣"
+### Algorithm
+while there_are_rules_in( raw ):
+  # Applies to a subpart of the input AND removes the first rule
+  raw = apply_first_rule_found( raw )  # Assignment b/c Python doesn't pass by ref.
+print raw
+###
 
-### Printing the Output
-print Input
-print '•••'
-#print tree
 
-Output = ''
+
+
+
