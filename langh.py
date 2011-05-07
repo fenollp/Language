@@ -1,35 +1,46 @@
-class Lexer:
-    def __init__(self, input="", keywords=[], operators=['+', '-', '*', '/']):
-        self.keywords = keywords
-        self.operators = operators
-        self.set_input(input)
+tree = []
+## ( (a) c ( b )((()E)) )
+# [{pos:0, len:20, childs:6},
+#   [{pos:2, len:1, content:" "}],
+#   [{pos:, len:1, childs:1},
+#     {pos:, len:1, content:"a"}
+#   ],
+#   [{pos:, len:3, content:" c "}],
+#   [{pos:, len:, childs:1}, {item:" b "}],
+#   [{…},
+#     [{…},
+#       [{pos:u, len:0, childs:0}],
+#       {pos:v, len:1, content:"E"}
+#     ]
+#   ],
+#   [{item:" "}]
+# ]
 
-    # Scan the next token and return it.
-    def read_next_token(self):
-        self.last_start_pos = self.start_pos
-        self.last_pos = self.pos
+I = """( (a) c ( b )((()E)) )"""
+i = 0
+L = len(I)
+a = ''
+tree = []
 
-        # Skip _whitespace
-        while self.input[self.pos] in _whitespace:
-            self.pos += 1
+while i < L:
+    if '(' == I[i]:
+        if current['content']:    # if is an item
+            current['len'] = current['pos'] - i + 1
+            current['content'] = a
 
-        # Remember the start position of the token being read for debugging
-        self.start_pos = self.pos
-        cur_char = self.input[self.pos] # The current characterbeing read
+        new = [{'pos':i, 'len':-1, 'childs':-1}]
+        current.append(new)
+        current = current.child(-1)    # current's last child
 
-        # Parentheses
-        if cur_char == '(':
-            self.pos += 1
-            return Token(LPAREN)
-        elif cur_char == ')':
-            self.pos += 1
-            return Token(RPAREN)
-                
-        # The end of the input
-        elif cur_char == _end_char:
-            return Token(END)
-        
-        # Woops, that's not legal
-        else:
-            raise IllicitCharError(cur_char, self.start_pos, self.pos)
+    elif ')' == I[i]:
+        current['len'] = current['pos'] - i + 1
+        current['childs'] = count(current)
+        current = current.parent()
+
+    else
+        tok += I[i]
+
+    i += 1
+
+print tree
 
