@@ -294,7 +294,7 @@ import sys
 # For debugging only. When 'pass' is replaced by 'print msg', it prints the
 # list of the names of the productions that are matched.
 def dump(msg):
-    print msg#pass
+    pass#print msg#pass
 
 
 class Parser:
