@@ -1,79 +1,67 @@
-#!/usr/bin/env
-#-*- coding: utf-8 -*-
+﻿#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
 
-# Python >= 2.6.1
+# 
 
-import re
+input = ''' ( (pattern) ê (replacement) ) '''
 
-def there_are_rules_in( text ):
-  return ( len(find_first_rule( text )) >= 1 )
-
-
-
-def apply_first_rule_found( text ):
-  (patt, rep, (start, end)) = find_first_rule( text )
-  # remove the rule & split text: the rule applies in the second part
-  t1 = text[: start]
-  t2 = text[end :]
-  print re.escape(patt), len(re.escape(patt)), patt, len(patt), re.escape(rep), len(re.escape(rep)), rep, len(rep)#
-  t2 = re.sub( re.escape(patt), rep, t2 )  # replace
-  return t1 + t2
+# ① Obliger GlobalScope
+# ② Obliger PatternScheme
 
 
+def split_in_scopes( input ):
+  """
+  str -> [str,]
+  Splits the first level of Scopes
+  """
+  scopes = []
 
-def find_first_rule( text ):
-  global rule_string
+  c = input + '\n'
+  buffer = ''
 
-  regex  = ur' (\(|\[|\{) \s* ([^' + rule_string + ur'\n \1 ]+) \s* \1 '
-  regex += ur'\s*' + rule_string + ur'\s*'
-  regex += ur' (\(|\[|\{) \s* ([^' + rule_string + ur'\n \2 ]+) \s* \2 '
+  n = 0   # n(i)
+  nn = n  # n(i-1)
+  def change_n( new ):
+    global n
+    global nn
+    nn = n
+    n = new
 
-  mask = re.compile(regex, re.S | re.X)
-  matches = mask.findall( text )
+  for i in range(len(c)):
+    if c[i] == '(':
+      change_n(n + 1)
+      if nn != 0:
+        buffer += c[i]
+    elif c[i] == ')':
+      change_n(n - 1)
+      if n == 0:
+        #print(buffer)#
+        scopes.append(buffer)
+        buffer = ''
+      buffer += c[i]
+    else:
+      buffer += c[i]
+    #print(n)#
 
-  if len(matches) is 0:
-    return matches
-  else:
-    (pos_s, pos_e) = mask.search( text ).span()
-    print matches
-    return (
-      matches[0][1].decode('utf-8'),  # Pattern
-      matches[0][2].decode('utf-8'),  # Replacement
-      (pos_s , pos_e +1)  # Start, End
+  if n < 0:  # Une ')' trouvée, sans paire '(':
+    # Le dernier scope est celui en cause
+    print("SyntaxError: " \
+      "cannot find (Global||local)Scope's ending" '\n' \
+      "In: " + scopes[-1] + ')' '\n' \
+      "Near " + '-'*(len(scopes[-1]) +4 -5 -1) + '↗' '\n' \
+      '\t' "(unmatching left parenthesis)"
     )
 
+  print(scopes)#
+  return scopes
 
+# ① Spliter en sous scopes
+scopes = split_in_scopes(input)
 
-
-iput = '''––––––––––––––––––––––––––––––––––––––––
-(patt ) ê (replacement)
-( patt) y (replacement)
-( p) ê ( r)
-
-  patt <---
-'''.decode('utf-8')
-
-rule_string = u'ê'
-raw = iput
-
-
-# Tests
-# print find_first_rule(raw)
-# print there_are_rules_in(raw)
-# apply_first_rule_found(raw)
-
-
-
-print raw
-print "⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣⇣"
-### Algorithm
-while there_are_rules_in( raw ):
-  # Applies to a subpart of the input AND removes the first rule
-  raw = apply_first_rule_found( raw )  # Assignment b/c Python doesn't pass by ref.
-print raw
-###
-
-
-
-
+n = nn = 0
+# ② Appliquer les schemes
+for scope in scopes:
+  c = scope
+  for i in range(len(c)):
+    pass
 
