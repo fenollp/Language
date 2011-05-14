@@ -4,7 +4,7 @@
 # 
 
 # input = open('./code.txt').read().decode('utf-8')
-input = u''' ( (pattern) ê (replacement) ) '''
+input = ''' ( (pattern) ê (replacement) ) '''
 
 # ① Obliger GlobalScope
 # ② Obliger PatternScheme
@@ -17,8 +17,8 @@ def split_in_scopes( input ):
   """
   scopes = []
 
-  c = input + u'\n'
-  buffer = u''
+  c = input + '\n'
+  buffer = ''
 
   n = 0   # n(i)
   nn = n  # n(i-1)
@@ -30,20 +30,20 @@ def split_in_scopes( input ):
     n = new
 
   for i in range(len(c)):
-    if c[i] == u'(':
+    if c[i] == '(':
       #change_n(n + 1)
       nn = n  # n(-1)
       n = n+1 # n(0)
       if nn != 0:
         buffer += c[i]
-    elif c[i] == u')':
+    elif c[i] == ')':
       #change_n(n - 1)
       nn = n  # n(-1)
       n = n-1 # n(0)
       if n == 0:
         #print(buffer)#
         scopes.append(buffer)
-        buffer = u''
+        buffer = ''
       buffer += c[i]
     else:
       buffer += c[i]
@@ -51,11 +51,11 @@ def split_in_scopes( input ):
 
   if n < 0:  # Une ')' trouvée, sans paire '(':
     # Le dernier scope est celui en cause
-    print(u"SyntaxError: " \
-      u"cannot find (Global||local)Scope's ending" u'\n' \
-      u"In: " + scopes[-1] + u')' u'\n' \
-      u"Near " + u'-'*(len(scopes[-1]) +4 -5 -1) + u'↗' u'\n' \
-      u'\t' u"(unmatching left parenthesis)"
+    print("SyntaxError: " \
+      "cannot find (Global||local)Scope's ending" '\n' \
+      "In: " + scopes[-1] + ')' '\n' \
+      "Near " + '-'*(len(scopes[-1]) +4 -5 -1) + '↗' '\n' \
+      '\t' "(unmatching left parenthesis)"
     )
 
   print(scopes)#
