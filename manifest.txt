@@ -1,0 +1,19 @@
+		Language - also called Tuple, The Language, My Precious, honeybunny, ...
+
+Where it should be useful
+=========================
+
+In Erlang
+---------
+
+move_work_from_stack_to_stack({{W,X},{Y_start,Y_end}}, From, To) ->
+  F = fun() ->
+    mnesia:write(#To{w=W, x=X, y_start=Y_start, y_end=Y_end}),
+    mnesia:delete_object(#From{w=W, x=X, y_start=Y_start, y_end=Y_end})
+  end,
+  trans(F).
+
+ERL refuses to compile this because of a “syntax error before: To”.
+Usually, #name{field=Content} describes a record named name, with a field field containing Content.
+Here I clearly need to manipulate syntax. I want to create a function that'll allow me to write something
+like I tried: clean & easy.
