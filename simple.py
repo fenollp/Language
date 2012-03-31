@@ -3,9 +3,6 @@
 
 # Usage: ./$0 ‹file utf-8 encoded›
 
-import sys
-raw = open(sys.argv[1]).read().decode('utf-8')
-
 import re
 lateral = 'jilk'; middle = '-|-' #add escape_regex/1
 scheme = re.compile(lateral +"\s+(.+)\s+\-\|\-(?:\s+(.+)\s+\-\|\-)?\s+(.+)\s+"+ lateral)
@@ -18,15 +15,22 @@ def recur( raw ): #may be function of scheme someday
 
   (pattern, modifier, replacement) = match.groups()
   pos_start = match.start(); pos_end = match.end()
-  raw = raw[:pos_start] +raw[pos_end:]
+  raw = raw[:pos_start] + raw[pos_end:]
+  raw = apply(raw, pattern, replacement, modifier)
 
+  return recur(raw)  # Keeps applying
+
+def apply( raw, pattern, replacement, modifiers ):
   flags = 0 #more flags to come
-  if modifier == u'-i':
+  if modifiers == u'-i':
     flags = re.IGNORECASE
   regex = re.compile(pattern, flags)
   raw = re.sub(regex, replacement, raw)
+  print raw
+  print u"› Applied: ‘"+ pattern +u"’ ⟼  ‘"+ replacement +u"’ / ", modifiers
+  return raw
 
-  print raw, "Applied: ", pattern, " --> ", replacement, " / ", modifier
-  return recur(raw)  # Keeps applying
-
+import sys
+raw = open(sys.argv[1]).read().decode('utf-8')
 print recur(raw)
+
