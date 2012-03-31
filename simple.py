@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
 
-# Usage: ./$0 ‹file utf-8 encoded› [--options]
+# Usage: ./$0 ‹file utf-8 encoded›
 
 import sys
 raw = open(sys.argv[1]).read().decode('utf-8')
 
 import re
 lateral = 'jilk'; middle = '-|-' #add escape_regex/1
-scheme = re.compile(lateral +"\s*(.+)\s*\-\|\-(?:\s*(.+)\s*\-\|\-)?\s*(.+)\s*"+ lateral)
+scheme = re.compile(lateral +"\s+(.+)\s+\-\|\-(?:\s+(.+)\s+\-\|\-)?\s+(.+)\s+"+ lateral)
 
-def apply( raw ): #may be function of scheme someday
+def recur( raw ): #may be function of scheme someday
   global scheme
   match = scheme.search(raw)  # Greedy or not greedy?
   if not match:  # Cannot apply any longer
@@ -27,6 +27,6 @@ def apply( raw ): #may be function of scheme someday
   raw = re.sub(regex, replacement, raw)
 
   print raw, "Applied: ", pattern, " --> ", replacement, " / ", modifier
-  return apply(raw)  # Keeps applying
+  return recur(raw)  # Keeps applying
 
-print apply(raw)
+print recur(raw)
