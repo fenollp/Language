@@ -9,9 +9,9 @@
 #  switch regex with real pattern matching & an inference machine;
 #  color terminal's output; extend re possibilities into Language's modifiers;
 
-#  a typing system (then an infering one) could be implemented using special syntax, that is pasting type info as text and handeling plaintext logic. There would be a distinction between single-headed rules and double-headed ones (equivalences). For a limited number of rule there should be a limited number of combinations possible, or some would lead to loopholes. We should be able to predict that and keep ony the ending ones. We could end up with a proof-machine!
+# A typing system (then an infering one) could be implemented using special syntax, that is pasting type info as text and handeling plaintext logic. There would be a distinction between single-headed rules and double-headed ones (equivalences). For a limited number of rule there should be a limited number of combinations possible, or some would lead to loopholes. We should be able to predict that and keep ony the ending ones. We could end up with a proof-machine!
 
-
+# A scope system is ineluctable. I can't help finding horrible Language's reserved words just because I want people to define their own, can't I? Seems like a good idea now…
 
 # Questions:
 #  Should we store patterns and seek to apply them over and over as new material appears?
