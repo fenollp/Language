@@ -1,0 +1,20 @@
+    Things under discussion ~ with myself, mostly
+
+# Options:
+#  input from stdin (is a file); halting recur; pair with a compile command;
+#  direct output to stdout, or a file;
+
+# To do:
+#  implement escape_regex/1; find mistyped commands; support for unicode in regex;
+#  switch regex with real pattern matching & an inference machine;
+#  color terminal's output; extend re possibilities into Language's modifiers;
+
+#  a typing system (then an infering one) could be implemented using special syntax, that is pasting type info as text and handeling plaintext logic. There would be a distinction between single-headed rules and double-headed ones (equivalences). For a limited number of rule there should be a limited number of combinations possible, or some would lead to loopholes. We should be able to predict that and keep ony the ending ones. We could end up with a proof-machine!
+
+
+
+# Questions:
+#  Should we store patterns and seek to apply them over and over as new material appears?
+#  or just apply the pattern once? hence the idea of defines ‘=>’ and ‘<=>’.
+#  Should the scheme be the Language reserved string, or an argument of recur's?
+
