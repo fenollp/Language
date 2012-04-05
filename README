@@ -17,6 +17,8 @@
 #  number of rule there should be a limited number of combinations possible,
 #  or some would lead to loopholes. We should be able to predict that and keep
 #  only the ending ones. We could end up with a machine that does proof!
+#  Furthermore, this text-compiling technique urges a strong typing; something
+#  self-expressing that suits the UNIX philosophy (but that may be too verbose).
 
 # A scope system is ineluctable.
 #  I can't help finding horrible Language's reserved words just because I want

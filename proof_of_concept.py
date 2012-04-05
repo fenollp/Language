@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
 
-# Usage: ./$0 ‹file utf-8 encoded›
+# Usage: ./$0 ‹file utf-8 encoded›.langh
 
 # Input a file, see how your rules are applied (only once)
 
