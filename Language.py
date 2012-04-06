@@ -36,7 +36,7 @@ def extract_rules( raw, schemes, rules ):
         return apply_rules_found(raw, rules)
       continue
     (pattern, replacement) = match.groups()
-    rules.append({"pattern":pattern, "replacement":re_escape(replacement)})
+    rules.append({"pattern":pattern, "replacement":replacement})
     # Apply once to raw's rest
     raw = raw[:match.start()] + re.sub(pattern, replacement, raw[match.end():])
     report_applied(raw, pattern, replacement)
