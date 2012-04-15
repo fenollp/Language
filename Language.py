@@ -43,7 +43,7 @@ def extract_rules( raw, schemes, rules ):
     return extract_rules(raw, schemes, rules)
 
 def re_escape( string ):
-  return string
+  return re.escape(string)
 
 def new_scheme( middle ):
   lateral = 'jilk'
