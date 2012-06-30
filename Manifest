@@ -48,9 +48,9 @@ no arguments, the typing system keeps track of whether a fun is side-effects
 free or not, … More paranoïdly, it means that you can assign a function to 
 whatever (?:combination of)? characters; ej: a space character. It implies that 
 your other functions definitions names' be surrounded by backslash-escaped 
-spaces in order to not conflict with already reserved names
+spaces in order to not conflict with already reserved names.
 
-typing funs -> side effects free ones
+
 
 
 
