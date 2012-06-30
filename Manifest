@@ -5,7 +5,6 @@ Where it should be useful
 
 In Erlang
 ---------
-
 move_work_from_stack_to_stack({{W,X},{Y_start,Y_end}}, From, To) ->
   F = fun() ->
     mnesia:write(#To{w=W, x=X, y_start=Y_start, y_end=Y_end}),
@@ -14,6 +13,20 @@ move_work_from_stack_to_stack({{W,X},{Y_start,Y_end}}, From, To) ->
   trans(F).
 
 ERL refuses to compile this because of a “syntax error before: To”.
-Usually, #name{field=Content} describes a record named name, with a field field containing Content.
-Here I clearly need to manipulate syntax. I want to create a function that'll allow me to write something
-like I tried: clean & easy.
+Usually, #name{field=Content} describes a record named name, with a field 
+field containing Content. Here I clearly need to manipulate syntax. I want to 
+create a function that'll allow me to write something like I tried: clean & easy
+
+
+Purpose
+=======
+
+History
+-------
+Google Chrome's Omnibar (but then it was Opera's) allows for a handful of 
+shortcuts. I liked the idea — and I like Regular Expressions, so it felt like a 
+mighty Language was hidden behind this input[text].
+I first thought of an OpenSearch-Terminal webpage furnished with Terminal-like 
+arguments (basic ‹bin file› ‹space› ‹arg string› thing, where ‹bin file› is a 
+shortname for the path). I tried very hard to infer meaning from Opera's short 
+commands, . Then multiline programs
