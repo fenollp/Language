@@ -12,7 +12,7 @@ move_work_from_stack_to_stack({{W,X},{Y_start,Y_end}}, From, To) ->
   end,
   trans(F).
 
-ERL refuses to compile this because of a “syntax error before: To”.
+  ERL refuses to compile this because of a “syntax error before: To”.
 Usually, #name{field=Content} describes a record named name, with a field 
 field containing Content. Here I clearly need to manipulate syntax. I want to 
 create a function that'll allow me to write something like I tried: clean & easy
@@ -23,7 +23,7 @@ Purpose
 
 History
 -------
-Google Chrome's Omnibar (but then it was Opera's) allows for a handful of 
+  Google Chrome's Omnibar (but then it was Opera's) allows for a handful of 
 shortcuts. I liked the idea — and I like Regular Expressions, so it felt like a 
 mighty Language was hidden behind this input[text]. I let my mind wonder around 
 that supposedly as yet not-totaly-revealed grammar. Opera had a single line 
@@ -33,12 +33,12 @@ project which dived through text to find patterns I had to make as much general
 as possible in order to grasp most if not all valuable information that I seeked 
 for (see my PHP Crawler project). I later had the idea of a program that would 
 extract patterns itself from content (see my Digest Text Files draft). 
-I eventually wanted a preprocessor aware of Unicode, that could translate my 
-Domain-Specific — to myself — Language into _whatever_ existing programming 
+  I eventually wanted a preprocessor aware of Unicode, that could translate my 
+Domain-Specific — to oneself — Language into _whatever_ existing programming 
 language using the lesser reserved words, which should mostly be ‘punctuation’ 
 (non cultural-specific graphems)
 
-I first thought of an OpenSearch-Terminal webpage furnished with Terminal-like 
+  I first thought of an OpenSearch-Terminal webpage furnished with Terminal-like 
 arguments (basic ‹bin file› ‹space› ‹arg string› thing, where ‹bin file› is a 
 shortname for the path).
 I tried very hard to infer meaning from Opera's short 
@@ -51,10 +51,12 @@ it more graspable a syntax, as more dialects would read non-language-specific
 Occard's razzor
 
 
-TL;DR: Started to conceptualize a programming language from scratch, from my 
+TL;DR:  Started to conceptualize a programming language from scratch, from my 
 needs; unfolded concepts more and more then reified and factored; invented 
 by myself everything-is-a-function, Lisp syntax in order to remove colons; 
-multilines groups of chars forming a macro; term rewriting compiling;
+multilines groups of chars forming a macro; term rewriting compiling; IDE to 
+render LaTeX; syntax-coloring (aside reserved words) of user-defined functions;
+ended with a very general language hence the former naming: ‘The Language’.
 
 
 
