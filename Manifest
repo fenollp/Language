@@ -35,13 +35,20 @@ graspable a syntax, as more dialects would read non-language-specific
 ‘punctuation’). Multiline programs followed one-liners, with modifiers 
 (relying on explicit or inferred typing) replacing semantically common commands, 
 tuple-ers and scopes (eventually adding meaning to colon syntax languages).
+Note to self: It would be interesting to find any language's “most basic words” 
+by studying a list of the words and their meaning expressed in and of said 
+language, removing looping dependencies and synonyms!!
 	At one time (Frenchmen's Première) I attended a Mathematics course and learned 
 about derivates & primitives. It occurred to me that I was seeking for 
 primitives of paradigm-indifferent modern programming languages' (ie. that I 
 knew of) reserved words. In my pursuit of the most powerful yet basic vocabulary 
 I applied Occam's Razzor's principle. It seemed cleaner to see everything as a 
 function; it may be my math background… That means constants are functions with 
-no arguments
+no arguments, the typing system keeps track of whether a fun is side-effects 
+free or not, … More paranoïdly, it means that you can assign a function to 
+whatever (?:combination of)? characters; ej: a space character. It implies that 
+your other functions definitions names' be surrounded by backslash-escaped 
+spaces in order to not conflict with already reserved names
 
 typing funs -> side effects free ones
 
