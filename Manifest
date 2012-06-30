@@ -50,16 +50,22 @@ whatever (?:combination of)? characters; ej: a space character. It implies that
 your other functions definitions names' be surrounded by backslash-escaped 
 spaces in order to not conflict with already reserved names.
 
-
-
-
-
 TL;DR:	Started to conceptualize a programming language from scratch, from my 
 needs; unfolded concepts more and more then reified and factored; invented 
 by myself everything-is-a-function, Lisp syntax in order to remove colons; 
 multilines groups of chars forming a macro; term rewriting compiling; IDE to 
 render LaTeX; syntax-coloring (aside reserved words) of user-defined functions;
 ended with a very general language hence the former naming: ‘The Language’.
+
+Naming
+------
+	Since the purpose is very general and large, I first thought an arrogant start 
+would be “The Language” or “Language”.
+But this project is more a smart preprocessor than a programming language — at 
+most it helps building DSLs. Its goal is to be a great syntactic sugars enabler, 
+thus I looked for sugar molecules' nomenclature... and it appears that typical 
+sugars are appended -ose suffixes, as in “glucose, dextrose and fructose”.
+Moreover, the extension OSE is not used as of today.
 
 
 Where it should be useful
