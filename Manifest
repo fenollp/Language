@@ -25,8 +25,26 @@ History
 -------
 Google Chrome's Omnibar (but then it was Opera's) allows for a handful of 
 shortcuts. I liked the idea — and I like Regular Expressions, so it felt like a 
-mighty Language was hidden behind this input[text].
+mighty Language was hidden behind this input[text]. I let my mind wonder around 
+that supposedly as yet not-totaly-revealed grammar. Opera had a single line 
+command-instruction yet powerful thing, and Google Search had a 
+‹label›:‹argument› way of appending meaning to search queries. I was in a 
+project which dived through text to find patterns I had to make as much general 
+as possible in order to grasp most if not all valuable information that I seeked 
+for (see my PHP Crawler project). I later had the idea of a 
+
 I first thought of an OpenSearch-Terminal webpage furnished with Terminal-like 
 arguments (basic ‹bin file› ‹space› ‹arg string› thing, where ‹bin file› is a 
-shortname for the path). I tried very hard to infer meaning from Opera's short 
-commands, . Then multiline programs
+shortname for the path).
+I tried very hard to infer meaning from Opera's short 
+commands, then liked Google Search's & Exalead's special search queries à la 
+Perl's symbols (See my ASQ project). I was much into HTML/PHP 
+hence began adding reserved words, then non-alphanumeric syntax (because I find 
+it more graspable a syntax, as more dialects would read non-language-specific 
+‘punctuation’) Then multiline programs
+
+
+
+
+
+
