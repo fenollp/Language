@@ -1,7 +1,67 @@
 		Language - also called Tuple, The Language, My Precious, honeybunny, ...
 
+Purpose
+=======
+
+History
+-------
+	Google Chrome's Omnibar (but then it was Opera's) allows for a handful of 
+shortcuts. I liked the idea — and I like Regular Expressions, so it felt like a 
+mighty Language was hidden behind this input[text]. I let my mind wonder around 
+that supposedly as yet not-totaly-revealed grammar. Opera had a single line 
+command-instruction yet powerful thing, and Google Search had a 
+‹label›:‹argument› way of appending meaning to search queries. I was in a 
+project which dived through text to find patterns I had to make as much general 
+as possible in order to grasp most if not all valuable information that I sought 
+for (see my PHP Crawler project). I later had the idea of a program that would 
+extract patterns itself from content (see my Digest Text Files draft). 
+	I eventually wanted a preprocessor aware of Unicode, that could translate 
+one's Domain-Specific Language into _whatever_ existing programming language 
+using the lesser reserved words, which should mostly be ‘punctuation’ (non 
+cultural-specific graphems) and be used by the developer to define her 
+reserved words, free from another's decision on typing, paradigm, mother tongue, 
+reading direction…
+	Your mind then bounds the possibilities. Don't panic, there is an Examples 
+section…
+
+	I first thought of|implemented an OpenSearch-Terminal webpage furnished with 
+Terminal-like arguments (basic ‹bin file› ‹space› ‹arg string› thing, where 
+‹bin file› is a shortname for bin's path).
+I tried very hard to infer meaning from Opera's short commands, then liked 
+Google Search's & Exalead's special search queries à la Perl's symbols (See my 
+ASQ project). I was much into HTML/PHP hence began adding reserved words to do 
+templating tasks, then non-alphanumeric syntax (because I find it more 
+graspable a syntax, as more dialects would read non-language-specific 
+‘punctuation’). Multiline programs followed one-liners, with modifiers 
+(relying on explicit or inferred typing) replacing semantically common commands, 
+tuple-ers and scopes (eventually adding meaning to colon syntax languages).
+	At one time (Frenchmen's Première) I attended a Mathematics course and learned 
+about derivates & primitives. It occurred to me that I was seeking for 
+primitives of paradigm-indifferent modern programming languages' (ie. that I 
+knew of) reserved words. In my pursuit of the most powerful yet basic vocabulary 
+I applied Occam's Razzor's principle. It seemed cleaner to see everything as a 
+function; it may be my math background… That means constants are functions with 
+no arguments
+
+typing funs -> side effects free ones
+
+
+
+TL;DR:	Started to conceptualize a programming language from scratch, from my 
+needs; unfolded concepts more and more then reified and factored; invented 
+by myself everything-is-a-function, Lisp syntax in order to remove colons; 
+multilines groups of chars forming a macro; term rewriting compiling; IDE to 
+render LaTeX; syntax-coloring (aside reserved words) of user-defined functions;
+ended with a very general language hence the former naming: ‘The Language’.
+
+
 Where it should be useful
 =========================
+
+In matching cases
+-----------------
+	Any sane person will prefer an Erlang-ish pattern matching fun to a verbose 
+C switch-case or an Erlang case-of.
 
 In Erlang
 ---------
@@ -12,51 +72,9 @@ move_work_from_stack_to_stack({{W,X},{Y_start,Y_end}}, From, To) ->
   end,
   trans(F).
 
-  ERL refuses to compile this because of a “syntax error before: To”.
+	ERL refuses to compile this because of a “syntax error before: To”.
 Usually, #name{field=Content} describes a record named name, with a field 
 field containing Content. Here I clearly need to manipulate syntax. I want to 
 create a function that'll allow me to write something like I tried: clean & easy
-
-
-Purpose
-=======
-
-History
--------
-  Google Chrome's Omnibar (but then it was Opera's) allows for a handful of 
-shortcuts. I liked the idea — and I like Regular Expressions, so it felt like a 
-mighty Language was hidden behind this input[text]. I let my mind wonder around 
-that supposedly as yet not-totaly-revealed grammar. Opera had a single line 
-command-instruction yet powerful thing, and Google Search had a 
-‹label›:‹argument› way of appending meaning to search queries. I was in a 
-project which dived through text to find patterns I had to make as much general 
-as possible in order to grasp most if not all valuable information that I seeked 
-for (see my PHP Crawler project). I later had the idea of a program that would 
-extract patterns itself from content (see my Digest Text Files draft). 
-  I eventually wanted a preprocessor aware of Unicode, that could translate my 
-Domain-Specific — to oneself — Language into _whatever_ existing programming 
-language using the lesser reserved words, which should mostly be ‘punctuation’ 
-(non cultural-specific graphems)
-
-  I first thought of an OpenSearch-Terminal webpage furnished with Terminal-like 
-arguments (basic ‹bin file› ‹space› ‹arg string› thing, where ‹bin file› is a 
-shortname for the path).
-I tried very hard to infer meaning from Opera's short 
-commands, then liked Google Search's & Exalead's special search queries à la 
-Perl's symbols (See my ASQ project). I was much into HTML/PHP 
-hence began adding reserved words, then non-alphanumeric syntax (because I find 
-it more graspable a syntax, as more dialects would read non-language-specific 
-‘punctuation’) Then multiline programs
-
-Occard's razzor
-
-
-TL;DR:  Started to conceptualize a programming language from scratch, from my 
-needs; unfolded concepts more and more then reified and factored; invented 
-by myself everything-is-a-function, Lisp syntax in order to remove colons; 
-multilines groups of chars forming a macro; term rewriting compiling; IDE to 
-render LaTeX; syntax-coloring (aside reserved words) of user-defined functions;
-ended with a very general language hence the former naming: ‘The Language’.
-
 
 
